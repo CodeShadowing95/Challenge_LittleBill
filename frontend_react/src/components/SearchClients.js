@@ -24,7 +24,7 @@ const SearchClients = () => {
       setSearchClients(response.data);
     })
     .catch((error) => {})
-  }, []);
+  }, [searchTerm]);
   
   // console.log(clients);
 
