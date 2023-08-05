@@ -34,8 +34,8 @@ const SearchClients = () => {
         <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", width: "8rem", height: "8rem" }}>
           <img src={NoData} alt="No_data" style={{ maxWidth: "100%", maxHeight: "100%" }} />
         </Box>
-        <Typography sx={{ fontSize: "30px", color: "#6e6e6e", fontWeight: 500 }}>Données sur le client recherché introuvable</Typography>
-      <Typography variant="body2" sx={{ color: "#a0a0a0", fontSize: "15px" }}>Veuillez bien saisir le nom du client ou essayer avec un autre nom</Typography>
+        <Typography sx={{ fontSize: "30px", color: "#6e6e6e", fontWeight: 500 }}>Chargement des données en cours...</Typography>
+      <Typography variant="body2" sx={{ color: "#a0a0a0", fontSize: "15px" }}>Si aucune donnée ne s'affiche après quelques secondes, les données n'existent pas.</Typography>
     </Box>
     );
   }
