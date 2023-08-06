@@ -11,20 +11,38 @@ import { Box, Pagination, Stack, Typography } from '@mui/material';
 import { fetchFromAPI } from '../utils/fetchFromAPI';
 import SalesDetailsBtn from './SalesDetailsBtn';
 import { NoData } from '../utils/constants';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 
-const ClientsList = () => {
+const ClientsList = ({ pagination }) => {
   const [clients, setClients] = useState([]);
+  const [pages, setPages] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  /* `const location = useLocation();` is using the `useLocation` hook from the `react-router-dom`
+  library to get the current location object. The `location` object contains information about the
+  current URL, including the query parameters. In this code, it is used to extract the value of the
+  'page' parameter from the URL query string using `new
+  URLSearchParams(location.search).get('page')`. */
+  const location = useLocation();
+  const navigate = useNavigate();
+  /* The line `const page = new URLSearchParams(location.search).get('page');` is extracting the value
+  of the 'page' parameter from the URL query string. */
+  const page = new URLSearchParams(location.search).get('page');
 
   useEffect(() => {
-    fetchFromAPI("clients/")
+    fetchFromAPI(`clients?page=${page}`)
     .then((response) => {
-      setClients(response.data);
+      setPages(response.data.total_pages);
+      setClients(response.data.clients)
     })
     .catch((error) => {})
-  }, []);
+  }, [page]);
+
+  const handleChange = (event, newPage) => {
+    setCurrentPage(newPage);
+    navigate(`/feature/clients?page=${newPage}`);
+  }
   
-  // console.log(clients);
 
   if (clients.length === 0) {
     return (
@@ -75,10 +93,12 @@ const ClientsList = () => {
         </TableBody>
       </Table>
     </TableContainer>
-  
-    <Stack spacing={2} sx={{ display: "flex", alignItems: "center", marginTop: "20px" }}>
-      <Pagination count={1} variant="outlined" shape="rounded" size="large" />
-    </Stack>
+
+    {pagination && (
+      <Stack spacing={2} sx={{ display: "flex", alignItems: "center", marginTop: "20px" }}>
+        <Pagination count={pages} onChange={handleChange} variant="outlined" shape="rounded" size="large" />
+      </Stack>
+    )}
     </>
   );
 };

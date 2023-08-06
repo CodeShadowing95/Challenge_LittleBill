@@ -2,6 +2,7 @@ import { Stack, Box, Typography } from '@mui/material'
 import { Navbar, Template } from './'
 
 import { DashboardIcon, FactCheckIcon, HistoryIcon, ImportExportIcon, PersonIcon, SettingsIcon, StarIcon, bgImages } from '../utils/constants'
+import ClientsList from './ClientsList'
 
 const Feed = () => {
 
@@ -24,6 +25,10 @@ const Feed = () => {
         <Template bgImage={bgImages[4]} icon={SettingsIcon} text="Demandes en traitement" value="28000" />
         <Template bgImage={bgImages[5]} icon={HistoryIcon} text="Coupons utilisés" value="107" />
       </Box>
+
+      {/* <Box sx={{ display: 'flex', flexDirection: "column", justifyContent: 'center', alignItems: 'center', padding: "2rem 4rem" }}>
+        <ClientsList />
+      </Box> */}
     </Stack>
   )
 }

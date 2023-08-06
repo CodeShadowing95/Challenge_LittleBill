@@ -24,7 +24,7 @@ const Feature = () => {
 
       {/* Content body */}
       <Box sx={{ height: "30rem", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", padding: "0 4rem" }}>
-        {id === "clients" && <ClientsList />}
+        {id === "clients" && <ClientsList pagination />}
         {id !== "clients" &&
           <Box sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", rowGap: 1, border: "2px dashed #d2d2d2", borderRadius: "5px", backgroundColor: "#f0f0f0", height: "20rem", width: "65rem" }}>
             <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", width: "8rem", height: "8rem" }}>

@@ -7,9 +7,9 @@ import { Sidebar, Feed, Feature, SearchFeed, SalesFeed } from './components';
 const App = () => (
   <BrowserRouter>
     <Box sx={{
-      backgroundColor: '#F5F5F5',
       display: 'flex',
-      height: '100vh',
+      alignItems: 'start',
+      backgroundColor: '#F5F5F5',
     }}>
       <Sidebar/>
       <Routes>

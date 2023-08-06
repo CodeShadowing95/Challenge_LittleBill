@@ -6,9 +6,11 @@ import MenuItem from './MenuItem'
 
 const Sidebar = () => (
   <Stack direction="column" sx={{
+    top: 0,
     backgroundColor: "#03254c",
-    minWidth: "15%",
-    // padding: "10px",
+    minWidth: "250px",
+    height: '100dvh',
+    position: "sticky",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center"
@@ -33,7 +35,7 @@ const Sidebar = () => (
 
         <MenuItem icon={DashboardIcon} text='Dashboard' />
         {features.map((feature) => (
-          <MenuItem icon={feature.icon} text={feature.name} />
+          <MenuItem icon={feature.icon} text={feature.name} key={feature.name} />
         ))}
       </Stack>
     </Stack>

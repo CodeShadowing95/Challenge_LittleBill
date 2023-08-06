@@ -7,6 +7,9 @@ const MenuItem = ({ icon, text }) => {
 
   const browse = (id) => {
     if(id !== 'dashboard'){
+      if(id === 'clients'){
+        return `/feature/${id}?page=1`
+      }
       return `/feature/${id}`
     } else {
       return "/"
