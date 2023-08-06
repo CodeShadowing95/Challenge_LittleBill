@@ -11,7 +11,7 @@ import { Box, Pagination, Stack, Typography } from '@mui/material';
 import { fetchFromAPI } from '../utils/fetchFromAPI';
 import SalesDetailsBtn from './SalesDetailsBtn';
 import { NoData } from '../utils/constants';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 const ClientsList = ({ pagination }) => {

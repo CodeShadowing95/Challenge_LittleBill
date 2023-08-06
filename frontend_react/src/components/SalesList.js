@@ -14,7 +14,7 @@ const SalesList = ({ val }) => {
       setSales(response.data);
     })
     .catch((error) => {})
-  }, []);
+  }, [val]);
   
   function Row(props) {
     const { row } = props;
@@ -62,8 +62,9 @@ const SalesList = ({ val }) => {
                     {row.line_items.map((line_item) => (
                       <TableRow key={line_item.product_model}>
                         <TableCell component="th" scope="row">
-                          {line_item.product_size}
+                          {line_item.product_model}
                         </TableCell>
+                        <TableCell>{line_item.product_size}</TableCell>
                         <TableCell>{line_item.quantity}</TableCell>
                         <TableCell align="right">{line_item.product_price}</TableCell>
                         <TableCell align="right">{line_item.points}</TableCell>
