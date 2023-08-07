@@ -3,7 +3,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from typing import Union
 import requests
 from dotenv import load_dotenv
-from pydantic import BaseModel
 import os
 from math import ceil
 
@@ -11,6 +10,7 @@ app = FastAPI()
 load_dotenv()
 
 
+# Identifiants de connexion à l'API
 username = os.getenv("HIBOUTIK_USERNAME")
 api_key = os.getenv("HIBOUTIK_API_KEY")
 
@@ -103,40 +103,25 @@ async def get_sales_by_client(
   return sales
   
   
-  
-  
-# Endpoint du challenge 3 pour ajouter de la pagination par tranche de 5
-@app.get("/ventes/")
-async def get_sales_by_client(
-  page: int = Query(1, gt=0, description="Page") # Nombre de pages comme paramètre
-):
+
+
+# Endpoint pour retourner la liste de toutes les ventes effectuées
+@app.get("/ventes/all")
+async def get_all_sales():
   sales = []
   
   for sale_id in range(1, 21):
     sales_api = f"https://techtest.hiboutik.com/api/sales/{sale_id}"
     response = requests.get(url=sales_api, auth=(username, api_key))
-    if response.status_code == 200:
-        sales_data = response.json()[0]
-        if len(sales_data) == 102:
-          sales.append(sales_data)
-    else:
-        raise HTTPException(status_code=response.status_code, detail="Failed to fetch sales from the external API")
     
-  # Pagination
-  items_per_page = 5
-  start_index = (page - 1) * items_per_page
-  end_index = start_index + items_per_page
+    if response.status_code == 200:
+      sales_data = response.json()[0]
+      sales.append(sales_data)
+    else:
+      raise HTTPException(status_code=response.status_code, detail="Failed to fetch sales from the external API")
   
-  page_clients = sales[start_index:end_index]
-  
-  return {
-    "page": page,
-    "items_per_page": items_per_page,
-    "total_items": len(page_clients),
-    "items": page_clients
-  }
-
-
+  return sales
+      
   
   
   
@@ -144,6 +129,6 @@ async def get_sales_by_client(
 
 
 
-# if __name__ == "__main__":
-#   import uvicorn
-#   uvicorn.run(app, host="127.0.0.1", port=8000)
+if __name__ == "__main__":
+  import uvicorn
+  uvicorn.run(app, host="127.0.0.1", port=8000, reload=True)
