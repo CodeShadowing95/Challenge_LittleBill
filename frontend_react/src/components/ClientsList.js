@@ -34,6 +34,7 @@ const ClientsList = ({ pagination }) => {
     .then((response) => {
       setPages(response.data.total_pages);
       setClients(response.data.clients)
+      console.log(response.data.clients);
     })
     .catch((error) => {})
   }, [page]);

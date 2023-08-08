@@ -3,6 +3,7 @@ import { Box, Collapse, IconButton, Paper, Table, TableBody, TableCell, TableCon
 import { KeyboardArrowUpIcon, KeyboardArrowDownIcon, NoData } from '../utils/constants';
 
 import { fetchFromAPI } from '../utils/fetchFromAPI';
+import SubSalesList from './SubSalesList';
 
 const SalesList = ({ val }) => {
   const [sales, setSales] = useState([]);
@@ -60,16 +61,7 @@ const SalesList = ({ val }) => {
                   </TableHead>
                   <TableBody>
                     {row.line_items.map((line_item) => (
-                      <TableRow key={line_item.product_model}>
-                        <TableCell component="th" scope="row">
-                          {line_item.product_model}
-                        </TableCell>
-                        <TableCell>{line_item.product_size}</TableCell>
-                        <TableCell>{line_item.quantity}</TableCell>
-                        <TableCell align="right">{line_item.product_price}</TableCell>
-                        <TableCell align="right">{line_item.points}</TableCell>
-                        <TableCell align="right">{line_item.discount}</TableCell>
-                      </TableRow>
+                      <SubSalesList lineObject={line_item} />
                     ))}
                   </TableBody>
                 </Table>
