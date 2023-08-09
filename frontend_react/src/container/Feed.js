@@ -1,9 +1,8 @@
 import { Stack, Box, Typography } from '@mui/material'
-import { Navbar, Template } from './'
+import { Template } from '../components'
+import Navbar from '../container/Navbar'
 
 import { DashboardIcon, FactCheckIcon, HistoryIcon, ImportExportIcon, PersonIcon, SettingsIcon, StarIcon, bgImages } from '../utils/constants'
-import ClientsList from './ClientsList'
-
 const Feed = () => {
 
   return (

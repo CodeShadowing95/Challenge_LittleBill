@@ -1,8 +1,8 @@
 import { Avatar, Box, Stack, Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
 
-import { user, DashboardIcon, HelpIcon, InfoIcon, features } from '../utils/constants'
-import MenuItem from './MenuItem'
+import { user, DashboardIcon, features } from '../utils/constants'
+import MenuItem from '../components/MenuItem'
 
 const Sidebar = () => (
   <Stack direction="column" sx={{

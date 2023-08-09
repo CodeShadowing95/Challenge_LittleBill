@@ -1,8 +1,8 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Box } from '@mui/material';
 
-import { Sidebar, Feed, Feature, SearchFeed, SalesFeed } from './components';
+import { Sidebar, Feed, Feature, SearchFeed, SalesFeed } from './container';
 import Auth from './components/Auth/Auth';
 
 const App = () => {

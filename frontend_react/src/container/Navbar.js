@@ -1,6 +1,6 @@
 import { Avatar, Badge, Box, Stack, Typography } from "@mui/material";
 
-import IconToggle from "./IconToggle";
+import IconToggle from "../components/IconToggle";
 import {
   KeyboardArrowDownIcon,
   user,
@@ -9,7 +9,7 @@ import {
   MenuIcon,
   HelpIcon,
 } from "../utils/constants";
-import Searchbar from "./Searchbar";
+import Searchbar from "../components/Searchbar";
 
 const Navbar = () => (
   <Stack

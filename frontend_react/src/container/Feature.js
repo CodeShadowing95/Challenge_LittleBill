@@ -3,7 +3,7 @@ import { Box, Stack, Typography } from '@mui/material'
 import { Navbar } from '.'
 
 import { NoData, features } from '../utils/constants'
-import ClientsList from './ClientsList'
+import ClientsList from '../components/ClientsList'
 
 const Feature = () => {
   const { id } = useParams();
