@@ -1,12 +1,13 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Box } from '@mui/material';
 
 import { Sidebar, Feed, Feature, SearchFeed, SalesFeed } from './components';
-// import Auth from './components/Auth';
+import Auth from './components/Auth/Auth';
 
 const App = () => {
-  // const user = JSON.parse(localStorage.getItem('profile'))
+  const user = JSON.parse(localStorage.getItem('profile'))
+  console.log(user);
 
   return (
   <BrowserRouter>
@@ -21,8 +22,8 @@ const App = () => {
         <Route path="/" exact element={<Feed />} />
         <Route path="/feature/:id" element={<Feature />} />
         <Route path="/search/:searchTerm" element={<SearchFeed />} />
-        <Route path="/sales/:id" element={<SalesFeed />} />
-        {/* <Route path="/auth" exact element={!user ? <Auth /> : <Feed/>} /> */}
+        <Route path="/sales" element={<SalesFeed />} />
+        <Route path="/auth" exact element={!user ? <Auth /> : <Feed />} />
       </Routes>
     </Box>
   </BrowserRouter>

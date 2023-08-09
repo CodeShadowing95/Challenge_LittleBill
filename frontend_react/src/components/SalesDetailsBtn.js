@@ -2,11 +2,11 @@ import { Stack } from "@mui/material";
 import { AssignmentIcon } from "../utils/constants";
 import { Link } from "react-router-dom";
 
-const SalesDetailsBtn = ({ customer_id }) => {
+const SalesDetailsBtn = ({ nom, prenom }) => {
   return (
     <Stack
       component={Link}
-      to={`/sales/${customer_id}`}
+      to={`/sales/?nom=${nom}&prenom=${prenom}`}
       sx={{
         display: "flex",
         float: "right",
@@ -20,7 +20,7 @@ const SalesDetailsBtn = ({ customer_id }) => {
           backgroundImage: 'linear-gradient(0deg, #38d9a9 5%, #388e3c 95%)',
         }
       }}
-      key={customer_id}
+      key={`${nom}`}
     >
       <AssignmentIcon sx={{ fontSize: "25px", color: "#fff" }} />
     </Stack>

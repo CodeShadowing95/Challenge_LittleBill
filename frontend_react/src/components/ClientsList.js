@@ -9,9 +9,9 @@ import Paper from '@mui/material/Paper';
 import { Box, Pagination, Stack, Typography } from '@mui/material';
 
 import { fetchFromAPI } from '../utils/fetchFromAPI';
-import SalesDetailsBtn from './SalesDetailsBtn';
 import { NoData } from '../utils/constants';
 import { useLocation, useNavigate } from 'react-router-dom';
+import ClientItem from './ClientItem';
 
 
 const ClientsList = ({ pagination }) => {
@@ -34,7 +34,7 @@ const ClientsList = ({ pagination }) => {
     .then((response) => {
       setPages(response.data.total_pages);
       setClients(response.data.clients)
-      console.log(response.data.clients);
+      // console.log(response.data.clients);
     })
     .catch((error) => {})
   }, [page]);
@@ -75,21 +75,8 @@ const ClientsList = ({ pagination }) => {
         </TableHead>
         <TableBody>
           {clients.map((client) => (
-            client.first_name !== "" && <TableRow
-              key={client.customers_id}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {client.last_name}
-              </TableCell>
-              <TableCell align="right">{client.first_name}</TableCell>
-              <TableCell align="right">{client.phone}</TableCell>
-              <TableCell align="right">{client.email}</TableCell>
-              <TableCell align="right">{client.country === "FRA" && "France"}</TableCell>
-              <TableCell align="right">{client.loyalty_points}</TableCell>
-              <TableCell align="right">{client.last_order_date}</TableCell>
-              <TableCell align="right"><SalesDetailsBtn customer_id={client.first_name} /></TableCell>
-            </TableRow>
+            // client.first_name !== "" &&
+            <ClientItem clientObject={client} />
           ))}
         </TableBody>
       </Table>
